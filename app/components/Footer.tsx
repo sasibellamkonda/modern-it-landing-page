@@ -52,9 +52,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <Link href="/" className="inline-flex mb-4">
-              <span className="bg-white rounded-md px-2.5 py-1 inline-flex">
-                <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-7 w-auto" />
-              </span>
+              <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-8 w-auto brightness-0 invert opacity-80" unoptimized />
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-5 max-w-[200px]">
               AI, cloud & enterprise IT consulting — Dallas, TX.

@@ -108,8 +108,8 @@ function HoloCard({ svc }: { svc: typeof services[0] }) {
 
 export default function ServicesGrid() {
   return (
-    <section id="services" className="py-24 md:py-32 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="py-16 md:py-24 lg:py-32 bg-slate-950">
+      <div className="max-w-6xl mx-auto px-5 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function ServicesGrid() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         >
           {services.map((svc) => <HoloCard key={svc.title} svc={svc} />)}
         </motion.div>

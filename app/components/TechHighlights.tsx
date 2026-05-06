@@ -31,8 +31,8 @@ const pillars = [
 
 export default function TechHighlights() {
   return (
-    <section id="technology" className="py-24 md:py-32 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="technology" className="py-16 md:py-24 lg:py-32 bg-slate-950">
+      <div className="max-w-6xl mx-auto px-5 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function TechHighlights() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
@@ -54,7 +54,7 @@ export default function TechHighlights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.12 }}
-              className={`group relative bg-slate-900 border rounded-2xl p-8 flex flex-col gap-5 cursor-pointer overflow-hidden transition-all duration-300 ${
+              className={`group relative bg-slate-900 border rounded-2xl p-6 md:p-8 flex flex-col gap-5 cursor-pointer overflow-hidden transition-all duration-300 ${
                 p.accent === "blue"
                   ? "border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_55px_rgba(59,130,246,0.1)]"
                   : "border-slate-800 hover:border-purple-500/50 hover:shadow-[0_0_55px_rgba(139,92,246,0.1)]"

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CareersCTA() {
   return (
-    <section id="careers" className="relative py-28 md:py-36 overflow-hidden bg-slate-950">
+    <section id="careers" className="relative py-20 md:py-28 lg:py-36 overflow-hidden bg-slate-950">
 
       {/* Aurora blobs — slow organic movement */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -38,7 +38,7 @@ export default function CareersCTA() {
           className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-indigo-300 rounded-full blur-[1px]" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -55,7 +55,7 @@ export default function CareersCTA() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.08 }}
-          className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6"
+          className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6"
         >
           Join Our Team.
         </motion.h2>
@@ -65,7 +65,7 @@ export default function CareersCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.16 }}
-          className="text-lg text-slate-400 leading-relaxed mb-10 max-w-xl mx-auto"
+          className="text-base md:text-lg text-slate-400 leading-relaxed mb-8 md:mb-10 max-w-xl mx-auto"
         >
           We&apos;re building a team of exceptional engineers, consultants, and strategists.
           If you thrive on solving complex problems and want to grow fast — this is your place.

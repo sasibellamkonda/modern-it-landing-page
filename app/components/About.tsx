@@ -58,9 +58,9 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-slate-950" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 md:py-24 lg:py-32 bg-slate-950" ref={ref}>
+      <div className="max-w-6xl mx-auto px-5 md:px-6">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
           {/* Left */}
           <div>
@@ -106,7 +106,7 @@ export default function About() {
           </div>
 
           {/* Right — animated stat counters */}
-          <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-4 md:gap-6">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -114,13 +114,13 @@ export default function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.12 }}
-                className="group bg-slate-900 border border-slate-800 rounded-2xl p-8 relative overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.07)]"
+                className="group bg-slate-900 border border-slate-800 rounded-2xl p-5 md:p-8 relative overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.07)]"
               >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/5 rounded-full blur-2xl group-hover:bg-blue-600/10 transition-all duration-500" />
-                <p className="text-5xl font-extrabold text-white tracking-tight mb-2 transition-all duration-300">
+                <p className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-1 md:mb-2 transition-all duration-300">
                   <Counter end={stat.value} suffix={stat.suffix} trigger={inView} />
                 </p>
-                <p className="text-slate-400 font-medium">{stat.label}</p>
+                <p className="text-slate-400 text-sm md:text-base font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </div>

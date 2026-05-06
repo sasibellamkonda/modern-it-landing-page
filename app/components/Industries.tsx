@@ -13,12 +13,12 @@ const industries = [
 
 export default function Industries() {
   return (
-    <section id="industries" className="py-24 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section id="industries" className="py-16 md:py-24 lg:py-32 bg-slate-900 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-blue-700/7 rounded-full blur-[110px]" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 relative">
+      <div className="max-w-6xl mx-auto px-5 md:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function Industries() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
           {industries.map((ind, i) => {
             /* Wave timing: each card has a slightly organic delay */
             const delay = i * 0.09 + Math.sin(i * 0.8) * 0.04;
@@ -46,7 +46,7 @@ export default function Industries() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ type: "spring", stiffness: 120, damping: 18, delay }}
-                className="group bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8 flex flex-col items-center gap-4 text-center hover:border-purple-500/40 hover:bg-slate-800 hover:shadow-[0_0_50px_rgba(139,92,246,0.1)] transition-all duration-300 cursor-pointer"
+                className="group bg-slate-800/50 border border-slate-700/50 rounded-2xl p-5 md:p-8 flex flex-col items-center gap-3 md:gap-4 text-center hover:border-purple-500/40 hover:bg-slate-800 hover:shadow-[0_0_50px_rgba(139,92,246,0.1)] transition-all duration-300 cursor-pointer min-h-[120px] md:min-h-0"
               >
                 <motion.div
                   whileHover={{ scale: 1.18, rotate: [0, -4, 4, 0] }}

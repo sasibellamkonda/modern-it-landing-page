@@ -194,7 +194,7 @@ export default function Hero() {
   useThreeScene(mountRef);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+    <section id="hero" className="relative min-h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
 
       {/* Three.js canvas */}
       <div ref={mountRef} className="absolute inset-0" />
@@ -203,7 +203,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950/60 pointer-events-none z-[1]" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-36 flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-6 py-28 md:py-36 flex flex-col items-center text-center">
 
         {/* Badge */}
         <motion.div
@@ -220,7 +220,7 @@ export default function Hero() {
 
         {/* Headline line 1 — each word from a different direction */}
         <div className="glitch-headline flex flex-wrap justify-center gap-x-[0.28em] mb-1
-          text-5xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.06]">
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.06]">
           {wordConfig.map(({ word, initial }, i) => (
             <div key={i} className="overflow-visible">
               <motion.span
@@ -236,8 +236,8 @@ export default function Hero() {
         </div>
 
         {/* Headline line 2 — gradient words */}
-        <div className="glitch-headline flex flex-wrap justify-center gap-x-[0.28em] mb-10
-          text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.06]">
+        <div className="glitch-headline flex flex-wrap justify-center gap-x-[0.28em] mb-8 md:mb-10
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.06]">
           {wordConfig2.map(({ word, initial }, i) => (
             <div key={i} className="overflow-visible">
               <motion.span
@@ -257,7 +257,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.75, delay: 1.0, ease: "easeOut" }}
-          className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 backdrop-blur-[2px]"
+          className="text-base md:text-lg xl:text-xl text-slate-400 max-w-2xl leading-relaxed mb-8 md:mb-10 backdrop-blur-[2px] px-1"
         >
           We accelerate digital transformation through AI, cloud, and intelligent
           automation — empowering enterprises to scale faster, innovate boldly, and

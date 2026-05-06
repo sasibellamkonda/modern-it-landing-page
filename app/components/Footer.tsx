@@ -46,10 +46,10 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-slate-800/60">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+      <div className="max-w-6xl mx-auto px-5 md:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12 text-center md:text-left">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-1.5 mb-4">
               <span className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -60,16 +60,16 @@ export default function Footer() {
                 <span className="text-blue-400">Prak</span>Corp
               </span>
             </Link>
-            <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-[200px]">
+            <p className="text-slate-500 text-sm leading-relaxed mb-5 max-w-[200px]">
               AI, cloud & enterprise IT consulting — Dallas, TX.
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center md:justify-start">
               {socials.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-700 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-700 transition-all duration-200"
                 >
                   {social.icon}
                 </a>
@@ -78,30 +78,32 @@ export default function Footer() {
           </div>
 
           {/* Link groups */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <p className="text-white font-semibold text-sm mb-4">{category}</p>
-              <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 md:contents gap-6 md:gap-0">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category} className="flex flex-col items-center md:items-start">
+                <p className="text-white font-semibold text-sm mb-3 md:mb-4">{category}</p>
+                <ul className="flex flex-col gap-2 md:gap-2.5">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <a
+                        href="#"
+                        className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200"
+                      >
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="border-t border-slate-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-slate-800/60 pt-6 md:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
           <p className="text-slate-600 text-sm">
             &copy; {new Date().getFullYear()} Prak Corporation. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-5 md:gap-6">
             {["Privacy Policy", "Terms of Service"].map((link) => (
               <a key={link} href="#" className="text-slate-600 hover:text-slate-400 text-sm transition-colors duration-200">
                 {link}

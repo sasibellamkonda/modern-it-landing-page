@@ -35,6 +35,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.nav
@@ -42,14 +47,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60 shadow-[0_1px_0_rgba(255,255,255,0.03)]"
+          scrolled || mobileOpen
+            ? "bg-slate-950/90 backdrop-blur-md border-b border-slate-800/60 shadow-[0_1px_0_rgba(255,255,255,0.03)]"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+        <div className="max-w-6xl mx-auto px-5 md:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1.5 shrink-0">
+          <Link href="/" className="flex items-center gap-1.5 shrink-0 z-10">
             <span className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -61,14 +66,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-6 lg:gap-7">
             {navLinks.map((link) => (
               <NavLink key={link} href={`#${link.toLowerCase()}`}>{link}</NavLink>
             ))}
           </div>
 
           {/* CTA + hamburger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 z-10">
             <a
               href="#contact"
               className="hidden md:inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_22px_rgba(59,130,246,0.4)]"
@@ -77,46 +82,58 @@ export default function Navbar() {
             </a>
             <button
               onClick={() => setMobileOpen((v) => !v)}
-              className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+              className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-400 hover:text-white transition-colors"
               aria-label="Toggle menu"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                {mobileOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />}
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <motion.path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  animate={mobileOpen ? { d: "M6 18L18 6M6 6l12 12" } : { d: "M4 6h16M4 12h16M4 18h16" }}
+                  transition={{ duration: 0.2 }}
+                />
               </svg>
             </button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile menu */}
+      {/* Full-screen mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 px-6 py-6 flex flex-col gap-4 md:hidden"
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ type: "spring", stiffness: 280, damping: 30 }}
+            className="fixed inset-0 z-40 bg-slate-950 flex flex-col items-center justify-center md:hidden"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+            <nav className="flex flex-col items-center gap-2 w-full px-8">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.06, type: "spring", stiffness: 200, damping: 22 }}
+                  className="w-full text-center text-2xl font-semibold text-slate-300 hover:text-white py-3 min-h-[56px] flex items-center justify-center border-b border-slate-800/60 last:border-0 transition-colors duration-150"
+                >
+                  {link}
+                </motion.a>
+              ))}
+
+              <motion.a
+                href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="text-slate-300 hover:text-white text-base font-medium transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.42, type: "spring", stiffness: 200, damping: 22 }}
+                className="mt-6 w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 min-h-[56px] flex items-center justify-center"
               >
-                {link}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-3 rounded-full transition-all duration-200"
-            >
-              Get Started
-            </a>
+                Get Started
+              </motion.a>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

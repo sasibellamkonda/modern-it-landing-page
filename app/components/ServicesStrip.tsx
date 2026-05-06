@@ -22,7 +22,7 @@ export default function ServicesStrip() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="relative py-20 bg-slate-950 border-y border-slate-800/50 overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-slate-950 border-y border-slate-800/50 overflow-hidden">
       {/* Section label */}
       <motion.p
         initial={{ opacity: 0, y: 16 }}
@@ -40,46 +40,50 @@ export default function ServicesStrip() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative h-52 flex items-center justify-center"
-        style={{ perspective: "1100px", perspectiveOrigin: "50% 40%" }}
+        className="relative h-36 sm:h-44 md:h-52 flex items-center justify-center overflow-hidden"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         {/* Left & right fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none" />
 
-        {/* The spinning track */}
-        <div
-          className={`carousel-track relative w-0 h-0`}
-          style={{ transformStyle: "preserve-3d" }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+        {/* Scaled perspective wrapper */}
+        <div className="absolute inset-0 flex items-center justify-center scale-[0.52] sm:scale-[0.72] md:scale-100 origin-center"
+          style={{ perspective: "1100px", perspectiveOrigin: "50% 40%" }}
         >
-          {/* Pause overlay handled via CSS class */}
+
+          {/* The spinning track */}
           <div
-            className={`carousel-track absolute inset-0 ${paused ? "paused" : ""}`}
+            className={`carousel-track relative w-0 h-0`}
             style={{ transformStyle: "preserve-3d" }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
-            {services.map((svc, i) => {
-              const angle = i * ANGLE_STEP;
-              return (
-                <div
-                  key={svc.label}
-                  className="absolute -translate-x-1/2 -translate-y-1/2"
-                  style={{
-                    transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateX(-50%) translateY(-50%)`,
-                    transformStyle: "preserve-3d",
-                    width: "200px",
-                  }}
-                >
-                  <div className={`bg-gradient-to-br ${svc.color} border border-white/10 rounded-2xl p-5 flex flex-col items-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.2)] backdrop-blur-sm cursor-default select-none`}>
-                    <div className="text-white/90">{svc.icon}</div>
-                    <p className="text-white font-semibold text-sm text-center leading-tight">{svc.label}</p>
+            <div
+              className={`carousel-track absolute inset-0 ${paused ? "paused" : ""}`}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {services.map((svc, i) => {
+                const angle = i * ANGLE_STEP;
+                return (
+                  <div
+                    key={svc.label}
+                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateX(-50%) translateY(-50%)`,
+                      transformStyle: "preserve-3d",
+                      width: "200px",
+                    }}
+                  >
+                    <div className={`bg-gradient-to-br ${svc.color} border border-white/10 rounded-2xl p-5 flex flex-col items-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.2)] backdrop-blur-sm cursor-default select-none`}>
+                      <div className="text-white/90">{svc.icon}</div>
+                      <p className="text-white font-semibold text-sm text-center leading-tight">{svc.label}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </motion.div>

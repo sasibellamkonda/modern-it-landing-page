@@ -29,19 +29,35 @@ export default function ContactForm() {
 
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly at info@prakcorp.com.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-slate-950">
+      <div className="max-w-6xl mx-auto px-5 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +74,7 @@ export default function ContactForm() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left: contact info */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -94,7 +110,7 @@ export default function ContactForm() {
           </motion.div>
 
           {/* Right: form */}
-          <div ref={formRef} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+          <div ref={formRef} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 md:p-8">
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.92 }}
@@ -147,16 +163,29 @@ export default function ContactForm() {
                   </motion.div>
                 ))}
 
+                {error && (
+                  <p className="text-red-400 text-sm mb-4">{error}</p>
+                )}
+
                 {/* Pulsing submit button */}
                 <motion.button
                   type="submit"
-                  animate={{ boxShadow: ["0 0 0 0px rgba(59,130,246,0)", "0 0 0 10px rgba(59,130,246,0.1)", "0 0 0 0px rgba(59,130,246,0)"] }}
+                  disabled={loading}
+                  animate={loading ? {} : { boxShadow: ["0 0 0 0px rgba(59,130,246,0)", "0 0 0 10px rgba(59,130,246,0.1)", "0 0 0 0px rgba(59,130,246,0)"] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 28px rgba(59,130,246,0.45)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 rounded-xl transition-colors duration-200"
+                  whileHover={loading ? {} : { scale: 1.02, boxShadow: "0 0 28px rgba(59,130,246,0.45)" }}
+                  whileTap={loading ? {} : { scale: 0.98 }}
+                  className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
                 >
-                  Send Message
+                  {loading ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      </svg>
+                      Sending…
+                    </>
+                  ) : "Send Message"}
                 </motion.button>
               </form>
             )}

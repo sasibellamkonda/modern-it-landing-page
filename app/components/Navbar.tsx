@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = ["Services", "Technology", "Industries", "Careers", "About", "Contact"];
 
@@ -54,14 +55,9 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-5 md:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1.5 shrink-0 z-10">
-            <span className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </span>
-            <span className="font-bold text-white text-lg tracking-tight">
-              <span className="text-blue-400">Prak</span>Corp
+          <Link href="/" className="flex items-center shrink-0 z-10">
+            <span className="bg-white rounded-md px-2.5 py-1 inline-flex">
+              <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-7 w-auto" priority />
             </span>
           </Link>
 

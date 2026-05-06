@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   Services: [
@@ -50,14 +51,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12 text-center md:text-left">
           {/* Brand */}
           <div className="md:col-span-1 flex flex-col items-center md:items-start">
-            <Link href="/" className="flex items-center gap-1.5 mb-4">
-              <span className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </span>
-              <span className="font-bold text-white text-lg tracking-tight">
-                <span className="text-blue-400">Prak</span>Corp
+            <Link href="/" className="inline-flex mb-4">
+              <span className="bg-white rounded-md px-2.5 py-1 inline-flex">
+                <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-7 w-auto" />
               </span>
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-5 max-w-[200px]">

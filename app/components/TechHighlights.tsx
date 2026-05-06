@@ -1,0 +1,86 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const pillars = [
+  {
+    icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2" /></svg>,
+    tag: "Strategy + Execution",
+    title: "Digital Transformation",
+    desc1: "We map your digital roadmap, identify quick wins, and architect long-term change programs that align technology with business strategy.",
+    desc2: "From legacy modernization to AI adoption — we make transformation tangible and measurable.",
+    accent: "blue",
+  },
+  {
+    icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}><path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>,
+    tag: "Multi-Cloud Expertise",
+    title: "Cloud Transformation",
+    desc1: "Whether you're migrating to AWS, Azure, or GCP — or operating across all three — we design cloud architectures built for resilience and scale.",
+    desc2: "FinOps-driven optimization ensures your cloud spend directly supports business growth.",
+    accent: "purple",
+  },
+  {
+    icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>,
+    tag: "24/7 Operations",
+    title: "Managed Services",
+    desc1: "Proactive monitoring, incident management, and continuous optimization across your full technology stack — so your team can focus on what matters.",
+    desc2: "SLA-backed support with dedicated engineers who know your environment inside out.",
+    accent: "blue",
+  },
+];
+
+export default function TechHighlights() {
+  return (
+    <section id="technology" className="py-24 md:py-32 bg-slate-950">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="text-center mb-16"
+        >
+          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Technology</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            Three Pillars of Our Practice
+          </h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {pillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.12 }}
+              className={`group relative bg-slate-900 border rounded-2xl p-8 flex flex-col gap-5 cursor-pointer overflow-hidden transition-all duration-300 ${
+                p.accent === "blue"
+                  ? "border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_55px_rgba(59,130,246,0.1)]"
+                  : "border-slate-800 hover:border-purple-500/50 hover:shadow-[0_0_55px_rgba(139,92,246,0.1)]"
+              }`}
+            >
+              {/* Animated top border glow */}
+              <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-400 ${p.accent === "blue" ? "from-transparent via-blue-500 to-transparent" : "from-transparent via-purple-500 to-transparent"}`} />
+
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                className={`w-14 h-14 rounded-xl flex items-center justify-center ${p.accent === "blue" ? "bg-blue-500/10 border border-blue-500/20 text-blue-400" : "bg-purple-500/10 border border-purple-500/20 text-purple-400"}`}
+              >
+                {p.icon}
+              </motion.div>
+
+              <div>
+                <p className={`text-xs font-semibold tracking-widest uppercase mb-2 ${p.accent === "blue" ? "text-blue-500" : "text-purple-500"}`}>{p.tag}</p>
+                <h3 className="text-white font-bold text-xl mb-4">{p.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">{p.desc1}</p>
+                <p className="text-slate-500 text-sm leading-relaxed">{p.desc2}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

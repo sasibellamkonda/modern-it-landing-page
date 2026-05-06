@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #020617;
+  color: #f1f5f9;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* ── Ticker ── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker 35s linear infinite;
+}
+.animate-ticker-paused {
+  animation-play-state: paused;
+}
+
+/* ── Aurora background ── */
+@keyframes aurora-shift {
+  0%   { transform: translate(0%, 0%)   scale(1);   opacity: 0.18; }
+  33%  { transform: translate(8%, -6%)  scale(1.15); opacity: 0.25; }
+  66%  { transform: translate(-6%, 8%)  scale(0.9);  opacity: 0.2;  }
+  100% { transform: translate(0%, 0%)   scale(1);   opacity: 0.18; }
+}
+.aurora-1 { animation: aurora-shift 12s ease-in-out infinite; }
+.aurora-2 { animation: aurora-shift 16s ease-in-out infinite reverse; animation-delay: -4s; }
+.aurora-3 { animation: aurora-shift 10s ease-in-out infinite; animation-delay: -8s; }
+
+/* ── Card glow pulse (used on hover) ── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(59,130,246,0.25), 0 0 40px rgba(59,130,246,0.1); }
+  50%       { box-shadow: 0 0 30px rgba(59,130,246,0.4),  0 0 60px rgba(59,130,246,0.2); }
+}
+.card-glow { animation: glow-pulse 2s ease-in-out infinite; }
+.card-glow-purple {
+  animation: glow-pulse-purple 2s ease-in-out infinite;
+}
+@keyframes glow-pulse-purple {
+  0%, 100% { box-shadow: 0 0 20px rgba(139,92,246,0.25), 0 0 40px rgba(139,92,246,0.1); }
+  50%       { box-shadow: 0 0 30px rgba(139,92,246,0.4),  0 0 60px rgba(139,92,246,0.2); }
+}
+
+/* ── Button idle pulse ── */
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(59,130,246,0); }
+  50%       { box-shadow: 0 0 0 10px rgba(59,130,246,0.12); }
+}
+.btn-pulse { animation: btn-pulse 2.5s ease-in-out infinite; }
+
+/* ── Number glow ── */
+.num-glow {
+  text-shadow: 0 0 24px rgba(59,130,246,0.55), 0 0 48px rgba(59,130,246,0.25);
+}
+
+/* ── Glitch / chromatic aberration ── */
+@keyframes glitch {
+  0%, 88%, 100% { text-shadow: none; transform: none; }
+  89%  { text-shadow: -3px 0 rgba(255,0,128,0.85), 3px 0 rgba(0,229,255,0.85); transform: skewX(-2deg) translateX(-2px); }
+  90%  { text-shadow:  3px 0 rgba(255,0,128,0.85),-3px 0 rgba(0,229,255,0.85); transform: skewX( 1.5deg) translateX(2px); }
+  91%  { text-shadow: -1px 0 rgba(255,0,128,0.6),  1px 0 rgba(0,229,255,0.6);  transform: none; }
+  92%  { text-shadow: none; transform: none; }
+  93%  { text-shadow:  2px 0 rgba(255,0,128,0.75),-2px 0 rgba(0,229,255,0.75); transform: skewX(0.8deg); }
+  94%  { text-shadow: none; transform: none; }
+}
+.glitch-headline { animation: glitch 4s linear infinite; animation-delay: 1.5s; }
+
+/* ── 3D Carousel ── */
+@keyframes carousel-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-360deg); }
+}
+.carousel-track { animation: carousel-spin 28s linear infinite; }
+.carousel-track.paused { animation-play-state: paused; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+

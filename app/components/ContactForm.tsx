@@ -56,7 +56,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-slate-950">
+    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-[#0A0F1E]">
       <div className="max-w-6xl mx-auto px-5 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -65,7 +65,7 @@ export default function ContactForm() {
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
           className="text-center mb-16"
         >
-          <p className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4">Get In Touch</p>
+          <p className="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4">Get In Touch</p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Let&apos;s Start a Conversation
           </h2>
@@ -86,7 +86,7 @@ export default function ContactForm() {
             <div className="flex flex-col gap-5">
               {contactDetails.map((detail) => (
                 <div key={detail.label} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
                     {detail.icon}
                   </div>
                   <div>
@@ -96,12 +96,12 @@ export default function ContactForm() {
                 </div>
               ))}
             </div>
-            <div className="pt-6 border-t border-slate-800">
+            <div className="pt-6 border-t border-[#1E3A8A]/40">
               <p className="text-slate-400 text-sm mb-4">Follow us</p>
               <div className="flex gap-3">
                 {socials.map((s) => (
                   <a key={s.label} href={s.href} aria-label={s.label}
-                    className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-slate-700 transition-all duration-200">
+                    className="w-10 h-10 rounded-xl bg-[#0F1A2E] border border-[#1E3A8A]/40 flex items-center justify-center text-slate-400 hover:text-orange-400 hover:border-orange-500/40 transition-all duration-200">
                     {s.icon}
                   </a>
                 ))}
@@ -110,14 +110,14 @@ export default function ContactForm() {
           </motion.div>
 
           {/* Right: form */}
-          <div ref={formRef} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 md:p-8">
+          <div ref={formRef} className="bg-[#0F1A2E] border border-[#1E3A8A]/30 rounded-2xl p-5 md:p-8">
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center h-64 gap-4 text-center"
               >
-                <div className="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                <div className="w-14 h-14 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
                   <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                 </div>
                 <h3 className="text-white font-bold text-xl">Message Sent!</h3>
@@ -137,7 +137,7 @@ export default function ContactForm() {
                       <label className="block text-slate-400 text-xs font-medium mb-1.5 uppercase tracking-wide">{field.label}</label>
                       <input name={field.name} type={field.type} value={(form as Record<string, string>)[field.name]}
                         onChange={handleChange} required placeholder={field.placeholder}
-                        className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500 transition-colors duration-200" />
+                        className="w-full bg-[#0A0F1E] border border-[#1E3A8A]/40 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors duration-200" />
                     </motion.div>
                   ))}
                 </div>
@@ -154,11 +154,11 @@ export default function ContactForm() {
                     {field.type === "textarea" ? (
                       <textarea name={field.name} value={(form as Record<string, string>)[field.name]}
                         onChange={handleChange} required rows={5} placeholder={field.placeholder}
-                        className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500 transition-colors duration-200 resize-none" />
+                        className="w-full bg-[#0A0F1E] border border-[#1E3A8A]/40 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors duration-200 resize-none" />
                     ) : (
                       <input name={field.name} type={field.type} value={(form as Record<string, string>)[field.name]}
                         onChange={handleChange} placeholder={field.placeholder}
-                        className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500 transition-colors duration-200" />
+                        className="w-full bg-[#0A0F1E] border border-[#1E3A8A]/40 rounded-xl px-4 py-3 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-[#3B82F6] transition-colors duration-200" />
                     )}
                   </motion.div>
                 ))}
@@ -171,11 +171,11 @@ export default function ContactForm() {
                 <motion.button
                   type="submit"
                   disabled={loading}
-                  animate={loading ? {} : { boxShadow: ["0 0 0 0px rgba(59,130,246,0)", "0 0 0 10px rgba(59,130,246,0.1)", "0 0 0 0px rgba(59,130,246,0)"] }}
+                  animate={loading ? {} : { boxShadow: ["0 0 0 0px rgba(249,115,22,0)", "0 0 0 10px rgba(249,115,22,0.12)", "0 0 0 0px rgba(249,115,22,0)"] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={loading ? {} : { scale: 1.02, boxShadow: "0 0 28px rgba(59,130,246,0.45)" }}
+                  whileHover={loading ? {} : { scale: 1.02, boxShadow: "0 0 28px rgba(249,115,22,0.45)" }}
                   whileTap={loading ? {} : { scale: 0.98 }}
-                  className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full bg-orange-500 hover:bg-orange-400 disabled:bg-orange-900 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>

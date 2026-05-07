@@ -18,7 +18,7 @@ function NavLink({ href, children }: { href: string; children: string }) {
     >
       {children}
       <motion.span
-        className="absolute -bottom-0.5 left-0 h-px bg-blue-400"
+        className="absolute -bottom-0.5 left-0 h-px bg-orange-500"
         animate={{ width: hovered ? "100%" : "0%" }}
         transition={{ duration: 0.22, ease: "easeOut" }}
       />
@@ -49,7 +49,7 @@ export default function Navbar() {
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || mobileOpen
-            ? "bg-slate-950/90 backdrop-blur-md border-b border-slate-800/60 shadow-[0_1px_0_rgba(255,255,255,0.03)]"
+            ? "bg-[#0A0F1E]/95 backdrop-blur-md border-b border-[#1E3A8A]/40 shadow-[0_1px_0_rgba(59,130,246,0.08)]"
             : "bg-transparent"
         }`}
       >
@@ -70,7 +70,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3 z-10">
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_22px_rgba(59,130,246,0.4)]"
+              className="hidden md:inline-flex items-center bg-orange-500 hover:bg-orange-400 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_22px_rgba(249,115,22,0.45)]"
             >
               Get Started
             </a>
@@ -100,7 +100,7 @@ export default function Navbar() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ type: "spring", stiffness: 280, damping: 30 }}
-            className="fixed inset-0 z-40 bg-slate-950 flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 z-40 bg-[#0A0F1E] flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center gap-2 w-full px-8">
               {navLinks.map((link, i) => (
@@ -111,19 +111,18 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 + i * 0.06, type: "spring", stiffness: 200, damping: 22 }}
-                  className="w-full text-center text-2xl font-semibold text-slate-300 hover:text-white py-3 min-h-[56px] flex items-center justify-center border-b border-slate-800/60 last:border-0 transition-colors duration-150"
+                  className="w-full text-center text-2xl font-semibold text-slate-300 hover:text-white py-3 min-h-[56px] flex items-center justify-center border-b border-[#1E3A8A]/40 last:border-0 transition-colors duration-150"
                 >
                   {link}
                 </motion.a>
               ))}
-
               <motion.a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.42, type: "spring", stiffness: 200, damping: 22 }}
-                className="mt-6 w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 min-h-[56px] flex items-center justify-center"
+                className="mt-6 w-full text-center bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 min-h-[56px] flex items-center justify-center"
               >
                 Get Started
               </motion.a>

@@ -36,7 +36,6 @@ function Counter({ end, suffix, trigger }: { end: number; suffix: string; trigge
     setDone(true);
     const duration = 2000;
     const start = performance.now();
-
     const step = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -58,7 +57,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-16 md:py-24 lg:py-32 bg-slate-950" ref={ref}>
+    <section id="about" className="py-16 md:py-24 lg:py-32 bg-[#0A0F1E]" ref={ref}>
       <div className="max-w-6xl mx-auto px-5 md:px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
@@ -69,7 +68,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
-              className="text-blue-400 text-sm font-semibold tracking-widest uppercase mb-4"
+              className="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4"
             >
               About Us
             </motion.p>
@@ -93,7 +92,7 @@ export default function About() {
                   transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.1 }}
                   className="flex gap-4"
                 >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
                     {b.icon}
                   </div>
                   <div>
@@ -114,10 +113,10 @@ export default function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 100, damping: 20, delay: i * 0.12 }}
-                className="group bg-slate-900 border border-slate-800 rounded-2xl p-5 md:p-8 relative overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.07)]"
+                className="group bg-[#0F1A2E] border border-[#1E3A8A]/30 rounded-2xl p-5 md:p-8 relative overflow-hidden hover:border-orange-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(249,115,22,0.08)]"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/5 rounded-full blur-2xl group-hover:bg-blue-600/10 transition-all duration-500" />
-                <p className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-1 md:mb-2 transition-all duration-300">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-600/5 rounded-full blur-2xl group-hover:bg-orange-500/8 transition-all duration-500" />
+                <p className="text-3xl md:text-5xl font-extrabold text-orange-400 tracking-tight mb-1 md:mb-2 transition-all duration-300">
                   <Counter end={stat.value} suffix={stat.suffix} trigger={inView} />
                 </p>
                 <p className="text-slate-400 text-sm md:text-base font-medium">{stat.label}</p>

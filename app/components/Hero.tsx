@@ -24,24 +24,24 @@ function useThreeScene(mountRef: React.RefObject<HTMLDivElement | null>) {
 
     /* Scene + fog for depth */
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x020617, 0.028);
+    scene.fog = new THREE.FogExp2(0x0A0F1E, 0.028);
 
     /* Camera */
     const camera = new THREE.PerspectiveCamera(65, mount.clientWidth / mount.clientHeight, 0.1, 100);
     camera.position.set(0, 0, 9);
 
     /* Lights */
-    scene.add(new THREE.AmbientLight(0x1a1a4e, 4));
-    const mouseLight = new THREE.PointLight(0x4488ff, 18, 28);
+    scene.add(new THREE.AmbientLight(0x0D1B3E, 5));
+    const mouseLight = new THREE.PointLight(0x3B82F6, 18, 28);
     mouseLight.position.set(0, 0, 6);
     scene.add(mouseLight);
-    const purpleLight = new THREE.PointLight(0x9933ff, 12, 22);
-    purpleLight.position.set(3, -2, 2);
-    scene.add(purpleLight);
-    const rimLight = new THREE.DirectionalLight(0x4466cc, 2);
+    const orangeLight = new THREE.PointLight(0xF97316, 14, 22);
+    orangeLight.position.set(3, -2, 2);
+    scene.add(orangeLight);
+    const rimLight = new THREE.DirectionalLight(0x2563EB, 2.5);
     rimLight.position.set(-6, 4, -3);
     scene.add(rimLight);
-    const fillLight = new THREE.PointLight(0x0055ff, 8, 18);
+    const fillLight = new THREE.PointLight(0x1E3A8A, 10, 18);
     fillLight.position.set(-4, 3, 4);
     scene.add(fillLight);
 
@@ -75,29 +75,29 @@ function useThreeScene(mountRef: React.RefObject<HTMLDivElement | null>) {
       });
     };
 
-    /* Icosahedrons — larger, closer to camera */
+    /* Icosahedrons — alternate blue and orange */
     for (let i = 0; i < 7; i++)
       addShape(new THREE.IcosahedronGeometry(rng(0.55, 1.4), coin() ? 0 : 1),
         rng(-8, 8), rng(-4, 4), rng(-5, 1.5),
-        rng(0.58, 0.72), coin());
+        i % 2 === 0 ? rng(0.58, 0.64) : rng(0.07, 0.11), coin());
 
-    /* Toruses — thicker & bigger */
+    /* Toruses — 2 blue, 2 orange */
     for (let i = 0; i < 4; i++)
       addShape(new THREE.TorusGeometry(rng(0.7, 1.4), rng(0.1, 0.22), 20, 60),
         rng(-7, 7), rng(-4, 4), rng(-6, 1),
-        rng(0.68, 0.78), false);
+        i < 2 ? rng(0.60, 0.65) : rng(0.07, 0.10), false);
 
-    /* Octahedrons — more prominent */
+    /* Octahedrons — 2 blue, 1 orange */
     for (let i = 0; i < 3; i++)
       addShape(new THREE.OctahedronGeometry(rng(0.6, 1.1)),
         rng(-6, 6), rng(-3.5, 3.5), rng(-5, 0),
-        rng(0.55, 0.65), false);
+        i < 2 ? rng(0.58, 0.63) : rng(0.07, 0.10), false);
 
     /* Starfield */
     const starPos = new Float32Array(350 * 3).map(() => (Math.random() - 0.5) * 45);
     const starGeo = new THREE.BufferGeometry();
     starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0x8899ff, size: 0.035, transparent: true, opacity: 0.5 });
+    const starMat = new THREE.PointsMaterial({ color: 0x6699ff, size: 0.035, transparent: true, opacity: 0.45 });
     const stars = new THREE.Points(starGeo, starMat);
     scene.add(stars);
 
@@ -140,7 +140,7 @@ function useThreeScene(mountRef: React.RefObject<HTMLDivElement | null>) {
       /* Mouse light drift */
       mouseLight.position.x += (mx * 5 - mouseLight.position.x) * 0.06;
       mouseLight.position.y += (my * 4 - mouseLight.position.y) * 0.06;
-      purpleLight.position.x += (-mx * 3 - purpleLight.position.x) * 0.03;
+      orangeLight.position.x += (-mx * 3 - orangeLight.position.x) * 0.03;
 
       /* Shape rotation + float */
       shapes.forEach(({ mesh, baseY, speedX, speedY, speedZ, floatAmp, floatSpeed, floatPhase }) => {
@@ -194,7 +194,7 @@ export default function Hero() {
   useThreeScene(mountRef);
 
   return (
-    <section id="hero" className="relative min-h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+    <section id="hero" className="relative min-h-[60vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
 
       {/* Three.js canvas */}
       <div ref={mountRef} className="absolute inset-0" />
@@ -210,10 +210,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/25 rounded-full px-4 py-1.5 mb-12 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/25 rounded-full px-4 py-1.5 mb-12 backdrop-blur-sm"
         >
-          <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-          <span className="text-blue-400 text-xs font-semibold tracking-wide uppercase">
+          <span className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-pulse" />
+          <span className="text-orange-400 text-xs font-semibold tracking-wide uppercase">
             Trusted by 50+ Enterprises
           </span>
         </motion.div>
@@ -241,7 +241,7 @@ export default function Hero() {
           {wordConfig2.map(({ word, initial }, i) => (
             <div key={i} className="overflow-visible">
               <motion.span
-                className="inline-block bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent"
+                className="inline-block bg-gradient-to-r from-blue-400 via-blue-300 to-orange-400 bg-clip-text text-transparent"
                 initial={{ ...initial, opacity: 0 }}
                 animate={{ x: 0, y: 0, rotate: 0, filter: "blur(0px)", opacity: 1 }}
                 transition={{ type: "spring", stiffness: 160, damping: 11, delay: 0.62 + i * 0.14 }}
@@ -272,11 +272,11 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a href="#services"
-            className="w-full sm:w-auto text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.55)] backdrop-blur-sm">
+            className="w-full sm:w-auto text-center bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_40px_rgba(249,115,22,0.55)] backdrop-blur-sm">
             Explore Services
           </a>
           <a href="#contact"
-            className="w-full sm:w-auto text-center border border-slate-600 hover:border-blue-400 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group backdrop-blur-sm">
+            className="w-full sm:w-auto text-center border border-blue-600 hover:border-blue-400 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:bg-blue-600/10 group backdrop-blur-sm">
             Talk to Us
             <span className="inline-block ml-1 transition-transform duration-200 group-hover:translate-x-1">→</span>
           </a>

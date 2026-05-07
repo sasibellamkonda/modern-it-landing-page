@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background-color: #020617;
+  background-color: #0A0F1E;
   color: #f1f5f9;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
@@ -42,30 +42,30 @@ body {
 .aurora-2 { animation: aurora-shift 16s ease-in-out infinite reverse; animation-delay: -4s; }
 .aurora-3 { animation: aurora-shift 10s ease-in-out infinite; animation-delay: -8s; }
 
-/* ── Card glow pulse (used on hover) ── */
+/* ── Card glow pulse — blue ── */
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 20px rgba(59,130,246,0.25), 0 0 40px rgba(59,130,246,0.1); }
-  50%       { box-shadow: 0 0 30px rgba(59,130,246,0.4),  0 0 60px rgba(59,130,246,0.2); }
+  50%       { box-shadow: 0 0 30px rgba(59,130,246,0.45), 0 0 60px rgba(59,130,246,0.2); }
 }
 .card-glow { animation: glow-pulse 2s ease-in-out infinite; }
-.card-glow-purple {
-  animation: glow-pulse-purple 2s ease-in-out infinite;
+
+/* ── Card glow pulse — orange ── */
+@keyframes glow-pulse-orange {
+  0%, 100% { box-shadow: 0 0 20px rgba(249,115,22,0.25), 0 0 40px rgba(249,115,22,0.1); }
+  50%       { box-shadow: 0 0 30px rgba(249,115,22,0.4),  0 0 60px rgba(249,115,22,0.2); }
 }
-@keyframes glow-pulse-purple {
-  0%, 100% { box-shadow: 0 0 20px rgba(139,92,246,0.25), 0 0 40px rgba(139,92,246,0.1); }
-  50%       { box-shadow: 0 0 30px rgba(139,92,246,0.4),  0 0 60px rgba(139,92,246,0.2); }
-}
+.card-glow-orange { animation: glow-pulse-orange 2s ease-in-out infinite; }
 
 /* ── Button idle pulse ── */
 @keyframes btn-pulse {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(59,130,246,0); }
-  50%       { box-shadow: 0 0 0 10px rgba(59,130,246,0.12); }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(249,115,22,0); }
+  50%       { box-shadow: 0 0 0 10px rgba(249,115,22,0.15); }
 }
 .btn-pulse { animation: btn-pulse 2.5s ease-in-out infinite; }
 
-/* ── Number glow ── */
+/* ── Number glow — orange ── */
 .num-glow {
-  text-shadow: 0 0 24px rgba(59,130,246,0.55), 0 0 48px rgba(59,130,246,0.25);
+  text-shadow: 0 0 24px rgba(249,115,22,0.65), 0 0 48px rgba(249,115,22,0.3);
 }
 
 /* ── Glitch / chromatic aberration ── */
@@ -90,6 +90,5 @@ body {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #020617; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-
+::-webkit-scrollbar-track { background: #0A0F1E; }
+::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 3px; }

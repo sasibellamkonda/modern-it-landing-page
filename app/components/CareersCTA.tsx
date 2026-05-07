@@ -4,38 +4,37 @@ import { motion } from "framer-motion";
 
 export default function CareersCTA() {
   return (
-    <section id="careers" className="relative py-20 md:py-28 lg:py-36 overflow-hidden bg-slate-950">
+    <section id="careers" className="relative py-20 md:py-28 lg:py-36 overflow-hidden bg-[#0A0F1E]">
 
-      {/* Aurora blobs — slow organic movement */}
+      {/* Aurora blobs — blue + orange */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Dark base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1E] via-[#0F1A2E]/60 to-[#0A0F1E]" />
 
-        {/* Blue aurora blob */}
+        {/* Blue aurora */}
         <div
           className="aurora-1 absolute -top-1/4 left-1/4 w-[700px] h-[500px] rounded-full"
-          style={{ background: "radial-gradient(ellipse, rgba(59,130,246,0.18) 0%, transparent 70%)", filter: "blur(60px)" }}
+          style={{ background: "radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 70%)", filter: "blur(60px)" }}
         />
-        {/* Purple aurora blob */}
+        {/* Orange aurora */}
         <div
           className="aurora-2 absolute top-1/4 right-1/4 w-[600px] h-[500px] rounded-full"
-          style={{ background: "radial-gradient(ellipse, rgba(139,92,246,0.2) 0%, transparent 70%)", filter: "blur(70px)" }}
+          style={{ background: "radial-gradient(ellipse, rgba(249,115,22,0.18) 0%, transparent 70%)", filter: "blur(70px)" }}
         />
-        {/* Teal aurora blob */}
+        {/* Deep blue aurora */}
         <div
           className="aurora-3 absolute bottom-0 left-1/3 w-[500px] h-[400px] rounded-full"
-          style={{ background: "radial-gradient(ellipse, rgba(20,184,166,0.12) 0%, transparent 70%)", filter: "blur(80px)" }}
+          style={{ background: "radial-gradient(ellipse, rgba(30,58,138,0.22) 0%, transparent 70%)", filter: "blur(80px)" }}
         />
 
         {/* Floating micro-orbs */}
         <motion.div animate={{ y: [-18, 18, -18], opacity: [0.35, 0.65, 0.35] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-16 left-1/4 w-3 h-3 bg-blue-400 rounded-full blur-[2px]" />
         <motion.div animate={{ y: [20, -20, 20], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-16 right-1/4 w-2 h-2 bg-purple-400 rounded-full blur-[2px]" />
+          className="absolute bottom-16 right-1/4 w-2 h-2 bg-orange-400 rounded-full blur-[2px]" />
         <motion.div animate={{ y: [-12, 12, -12], x: [8, -8, 8], opacity: [0.25, 0.55, 0.25] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-1/3 right-1/3 w-2 h-2 bg-teal-300 rounded-full blur-[2px]" />
+          className="absolute top-1/3 right-1/3 w-2 h-2 bg-orange-300 rounded-full blur-[2px]" />
         <motion.div animate={{ y: [15, -15, 15], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3.5 }}
-          className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-indigo-300 rounded-full blur-[1px]" />
+          className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full blur-[1px]" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-6 text-center">
@@ -44,10 +43,10 @@ export default function CareersCTA() {
           whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-1.5 mb-8"
+          className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-8"
         >
-          <span className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" />
-          <span className="text-purple-400 text-xs font-semibold tracking-wide uppercase">Now Hiring</span>
+          <span className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-pulse" />
+          <span className="text-orange-400 text-xs font-semibold tracking-wide uppercase">Now Hiring</span>
         </motion.div>
 
         <motion.h2
@@ -79,11 +78,11 @@ export default function CareersCTA() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a href="#contact"
-            className="w-full sm:w-auto text-center bg-purple-600 hover:bg-purple-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_36px_rgba(139,92,246,0.45)]">
+            className="w-full sm:w-auto text-center bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_36px_rgba(249,115,22,0.45)]">
             View Open Positions
           </a>
           <a href="mailto:careers@prakcorp.com"
-            className="w-full sm:w-auto text-center border border-slate-700 hover:border-purple-500/60 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
+            className="w-full sm:w-auto text-center border border-blue-600 hover:border-blue-400 hover:bg-blue-600/10 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
             careers@prakcorp.com
           </a>
         </motion.div>
@@ -97,7 +96,7 @@ export default function CareersCTA() {
         >
           {["Remote-friendly", "Competitive pay", "Fast growth", "Great culture"].map((perk) => (
             <div key={perk} className="flex items-center gap-2 text-slate-500 text-sm">
-              <svg className="w-4 h-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
               {perk}

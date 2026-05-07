@@ -46,7 +46,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800/60">
+    <footer className="bg-[#0A0F1E] border-t border-[#1E3A8A]/40">
       <div className="max-w-6xl mx-auto px-5 md:px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12 text-center md:text-left">
           {/* Brand */}
@@ -63,7 +63,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-700 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-[#0F1A2E] border border-[#1E3A8A]/30 flex items-center justify-center text-slate-500 hover:text-orange-400 hover:border-orange-500/40 transition-all duration-200"
                 >
                   {social.icon}
                 </a>
@@ -81,7 +81,7 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200"
+                        className="text-slate-500 hover:text-orange-400 text-sm transition-colors duration-200"
                       >
                         {link}
                       </a>
@@ -93,13 +93,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800/60 pt-6 md:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
+        <div className="border-t border-[#1E3A8A]/40 pt-6 md:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
           <p className="text-slate-600 text-sm">
             &copy; {new Date().getFullYear()} Prak Corporation. All rights reserved.
           </p>
           <div className="flex gap-5 md:gap-6">
             {["Privacy Policy", "Terms of Service"].map((link) => (
-              <a key={link} href="#" className="text-slate-600 hover:text-slate-400 text-sm transition-colors duration-200">
+              <a key={link} href="#" className="text-slate-600 hover:text-orange-400 text-sm transition-colors duration-200">
                 {link}
               </a>
             ))}

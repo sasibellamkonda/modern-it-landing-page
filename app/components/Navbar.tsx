@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-5 md:px-6 flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0 z-10">
-            <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-8 w-auto brightness-0 invert" priority unoptimized />
+            <Image src="/prak-logo.png" alt="PrakCorp" width={110} height={36} className="h-8 w-auto" priority unoptimized />
           </Link>
 
           {/* Desktop nav */}

@@ -200,7 +200,7 @@ export default function Hero() {
       <div ref={mountRef} className="absolute inset-0" />
 
       {/* Scroll-dissolve overlay — fades site in over the 3D scene */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-transparent to-slate-950/60 pointer-events-none z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1E]/20 via-transparent to-[#0A0F1E]/60 pointer-events-none z-[1]" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-6 py-28 md:py-36 flex flex-col items-center text-center">

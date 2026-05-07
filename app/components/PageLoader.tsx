@@ -19,7 +19,7 @@ export default function PageLoader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="fixed inset-0 z-[200] bg-slate-950 pointer-events-none"
+          className="fixed inset-0 z-[200] bg-[#0A0F1E] pointer-events-none"
         />
       )}
     </AnimatePresence>
